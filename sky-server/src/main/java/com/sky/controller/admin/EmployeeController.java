@@ -67,8 +67,7 @@ public class EmployeeController {
 
     /**
      * 退出
-     *
-     * @return
+
      */
     @PostMapping("/logout")
     @ApiOperation(value = "员工退出")
@@ -91,6 +90,41 @@ public class EmployeeController {
         log.info("员工分页查询，参数：{}",employeePageQueryDTO);
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
+    }
+
+    /**
+     * 启用禁用员工账号
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation(value = "启用禁用员工账号")
+    public Result startOrStop(@PathVariable Integer status, Long id){
+        log.info("启用禁用员工账号：{},{}",status,id);
+        employeeService.startOrStop(status,id);
+        return Result.success();
+    }
+
+    /*
+    根据id查询信息
+     */
+    @GetMapping("/{id}")
+    @ApiOperation(value = "查询员工信息")
+    public Result<Employee> getById(@PathVariable long id){
+        log.info("查询员工信息");
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
+    }
+
+    /*
+    修改员工信息
+     */
+    @PutMapping
+    @ApiOperation(value = "修改员工信息" )
+    public Result update(@RequestBody  EmployeeDTO employeeDTO){
+        employeeService.update(employeeDTO);
+        return Result.success();
     }
 
 }
