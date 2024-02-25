@@ -12,3 +12,9 @@ sky:
     access-key-id: LTAI5tN33K76pDW6rRntiswy
     access-key-secret: UZDzq4IW9OzCFkmvKeMXDGdZBnP34j
     bucket-name: baby-shark
+
+  redis:
+    host: 8.137.123.85
+    port: 6379
+    password: 472020
+    database: 10
