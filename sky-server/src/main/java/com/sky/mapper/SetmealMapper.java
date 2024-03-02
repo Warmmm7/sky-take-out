@@ -53,6 +53,11 @@ public interface SetmealMapper {
     @Delete("delete from sky_take_out.setmeal where id = #{id}")
     void deteleById(Long setmealId);
 
+    /**
+     * 根据id修改套餐
+     *
+     * @param setmeal
+     */
     @AutoFill(value = OperationType.UPDATE)
     void update(Setmeal setmeal);
 
